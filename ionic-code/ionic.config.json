@@ -1,0 +1,7 @@
+{
+  "name": "file-upload-laravel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

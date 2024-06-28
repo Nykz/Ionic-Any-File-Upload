@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Upload file
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-margin">
+    <input type="file" #filePicker (change)="onFileChosen($event)">
+
+
+    <div class="ion-margin itemImage" (click)="changeFile()">
+      @if(!image || image == '') {
+        <ion-icon name="cloud-upload-outline" color="danger"></ion-icon>
+          <p>Upload Any File here</p>
+      } @else {
+        @if(isImageFile) { 
+          <img [src]="image">
+        } @else {
+          <ion-text>{{ imageFile?.name }}</ion-text>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="ion-margin ion-padding-top">
+    <ion-button expand="block" (click)="uploadFile()">Upload</ion-button>
+  </div>
+
+  <ion-toast
+    [isOpen]="isToast"
+    [color]="toastData?.color || 'dark'"
+    [message]="toastData?.message"
+    [position]="'bottom'"
+    [duration]="5000"
+    (didDismiss)="isToast = false"
+  ></ion-toast>
+</ion-content>
